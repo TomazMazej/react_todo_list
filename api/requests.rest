@@ -1,0 +1,38 @@
+GET http://localhost:3001/todos
+
+###
+
+GET http://localhost:3001/lists
+
+###
+
+POST http://localhost:3001/list/new
+Content-Type: application/json
+
+{
+    "text" : "Seznam1",
+    "tag" : "School"
+} 
+
+###
+
+POST http://localhost:3001/todo/new
+Content-Type: application/json
+
+{
+    "text" : "Order Pizza1",
+    "tag" : "neki",
+    "list" : "6177f5c60403f0e467253a23"
+} 
+
+###
+
+DELETE http://localhost:3001/todo/delete/6171931f350995dc27c44853
+
+###
+
+DELETE http://localhost:3001/list/delete/6177ec7c0403f0e4672539ff
+
+###
+
+PUT http://localhost:3001/todo/complete/61719318350995dc27c44850
