@@ -18,10 +18,6 @@ function App() {
   const [popupActive, setPopupActive] = useState(false);
   const [newTodo, setNewTodo] = useState("");
 
-  const handleStateChange = (newState) => {
-    setListId(newState);
-  }
-
   useEffect(() => {
     GetLists();
   }, [])
@@ -30,12 +26,9 @@ function App() {
     GetTodos();
   }, [])
 
-  useEffect(() => {
-    const newTodos = todos.filter(todo => todo.list === listId);
-    console.log(newTodos);
-    setTodos(newTodos);
-    window.location.href = '/todos';
-  }, [listId])
+  const handleStateChange = (id) => {
+    setListId(id);
+  }
 
   const GetLists = () => {
     fetch(API_BASE + "/lists")
@@ -141,27 +134,34 @@ function App() {
         </>
         )} />
 
-        <Route path='/todos' exact render={(props) => (
-          <>
-            <Tasks todos={todos} onDelete={deleteTodo} onComplete={completeTodo}/>
-            <div className="addPopup" onClick={() => setPopupActive(true)}>+</div>
+        <Route path='/lists/:id' exact render={(props) => {
+          return <Tasks todos={todos.filter(todo => todo.list.toString() === window.location.pathname.split('/')[2])} onDelete={deleteTodo} onComplete={completeTodo}/>
+        }} />
 
-            {popupActive ? (
-              <div className="popup">
-                <div className="closePopup" onClick={() => setPopupActive(false)}>x</div>
-                <div className="content">
-                  <h3>Add Task</h3>
-                  <input 
-                    type="text" 
-                    className="add-todo-input" 
-                    onChange={e => setNewTodo(e.target.value)} 
-                    value={newTodo} />
-                    <div className="button" onClick={addTodo}>Create Task</div>
+        <Route path='/todos' exact render={(props) => {
+          return (
+            <>
+              <Tasks todos={todos.filter(todo => todo.list === listId)} onDelete={deleteTodo} onComplete={completeTodo}/>
+              <div className="addPopup" onClick={() => setPopupActive(true)}>+</div>
+  
+              {popupActive ? (
+                <div className="popup">
+                  <div className="closePopup" onClick={() => setPopupActive(false)}>x</div>
+                  <div className="content">
+                    <h3>Add Task</h3>
+                    <input 
+                      type="text" 
+                      className="add-todo-input" 
+                      onChange={e => setNewTodo(e.target.value)} 
+                      value={newTodo} />
+                      <div className="button" onClick={addTodo}>Create Task</div>
+                  </div>
                 </div>
-              </div>
-            ) : ''}
-         </>
-        )} />
+              ) : ''}
+           </>
+          )
+        }
+        } />
       </div>
     </Router>
   );
