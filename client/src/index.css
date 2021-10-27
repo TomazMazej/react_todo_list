@@ -38,6 +38,13 @@ h4 {
 	margin-bottom: 16px;
 }
 
+h5 {
+	font-size: 16px;
+	color: rgb(0, 0, 0);
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
 .todo {
 	position: relative;
 	background-color: var(--dark);
@@ -87,6 +94,22 @@ h4 {
 	height: 24px;
 	border-radius: 50%;
 	background-color: #AF1E2D;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+}
+
+.todo .edit-todo {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 50px;
+	color: var(--light);
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #1e5daf;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -154,6 +177,7 @@ h4 {
 	width: 100%;
 	box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
 	font-size: 20px;
+	margin-bottom: 10px;
 }
 
 .button {

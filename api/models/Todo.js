@@ -11,13 +11,18 @@ const TodoSchema = new Schema({
         type: String,
         required: true
     },
+    reminder: {
+        type: String,
+        required: true
+    },
     complete: {
         type: Boolean,
         default: false
     },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        format: "dd/MM/yyy"
     },
     list: {
         type: String,
