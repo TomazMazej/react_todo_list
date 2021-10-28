@@ -1,10 +1,10 @@
 :root {
-	--primary: #D81E5B;
-	--secondary: #8A4EFC;
-	--light: #EEE;
-	--light-alt: #61759b;
-	--dark: #131A26;
-	--dark-alt: #202B3E;
+	--primary: #23a363;
+	--secondary: #4f1dac;
+	--light: rgb(255, 255, 255);
+	--light-alt: #99baf5;
+	--dark: #263347;
+	--dark-alt: #100d53;
 }
 
 * {
@@ -78,6 +78,11 @@ h5 {
 
 .todo .text {
 	font-size: 20px;
+}
+
+.todo .text-reminder {
+	font-size: 20px;
+	color: #AF1E2D;
 }
 
 .todo.is-complete .text {

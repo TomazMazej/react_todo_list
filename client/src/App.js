@@ -175,7 +175,12 @@ function App() {
         {/*SEZNAMI*/}
         <Route path='/' exact render={(props) => (
           <>
-            <Lists lists={lists} onDelete={deleteList} onEdit={setEditListActive} editedList={setEditedList}/>
+            <Lists lists={lists}
+                   onDelete={deleteList}
+                   onEdit={setEditListActive}
+                   editedList={setEditedList}
+                   newTodo={setNewTodo}
+                   newTag={setNewTag}/>
             <div className="addPopup" onClick={() => setAddListActive(true)}>+</div>
 
             {/*Dodajanje seznama*/}
@@ -230,7 +235,14 @@ function App() {
         <Route path='/list/:id' exact render={(props) => {
           return (
             <>
-              <Tasks todos={todos.filter(todo => todo.list.toString() === window.location.pathname.split('/')[2])} onDelete={deleteTodo} onComplete={completeTodo} onEdit={setEditTaskActive} editedTask={setEditedTask}/>
+              <Tasks todos={todos.filter(todo => todo.list.toString() === window.location.pathname.split('/')[2])}
+                     onDelete={deleteTodo}
+                     onComplete={completeTodo}
+                     onEdit={setEditTaskActive}
+                     editedTask={setEditedTask}
+                     newTodo={setNewTodo}
+                     newTag={setNewTag}
+                     newReminder={setNewReminder} />
               <div className="addPopup" onClick={() => setAddTaskActive(true)}>+</div>
   
               {/*Dodajanje opravila*/}

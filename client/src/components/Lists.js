@@ -1,12 +1,14 @@
-export const Lists = ( {lists, onDelete, onEdit, editedList} ) => {
+export const Lists = ( {lists, onDelete, onEdit, editedList, newTodo, newTag} ) => {
 
     // Preusmeritev na opravila
     const onClick = (id) => {
         window.location.href = `/list/${id}`;
     }
 
-    const editList = (id) => {
-        editedList(id);
+    const editList = (list) => {
+        editedList(list._id);
+        newTodo(list.text);
+        newTag(list.tag);
         onEdit(true);
     }
 
@@ -19,7 +21,7 @@ export const Lists = ( {lists, onDelete, onEdit, editedList} ) => {
                         <div className="todo" value={list._id} >
                             <div className="text" onClick={() => onClick(list._id)}>{ list.text + "(" + list.tag + ")"}</div>
                             <div className="delete-todo" onClick={() => onDelete(list._id)}>x</div>
-                            <div className="edit-todo" onClick={() => editList(list._id)}>i</div>
+                            <div className="edit-todo" onClick={() => editList(list)}>i</div>
                         </div>
                     </div>
                 ))}
