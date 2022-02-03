@@ -12,7 +12,7 @@ export const Tasks = ( {todos, onDelete, onComplete, onEdit, editedTask, newTodo
         var today = new Date();
         console.log(todo.remind)
         today.setDate(today.getDate() + parseInt(todo.reminder));
-        if(new Date(todo.date).toDateString() === new Date(today).toDateString()){
+        if(new Date(todo.date).toDateString() <= new Date(today).toDateString()){
             return true;
         }
         return false;
