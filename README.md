@@ -12,3 +12,6 @@ A simple TODO List made in React for learning purposes
 * Express
 * React
 * Node.js
+
+## Pictures
+![Image1](/pictures/picture.PNG)
